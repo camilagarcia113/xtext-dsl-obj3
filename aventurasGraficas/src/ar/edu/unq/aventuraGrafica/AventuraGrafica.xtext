@@ -1,0 +1,78 @@
+grammar ar.edu.unq.AventuraGrafica with org.eclipse.xtext.common.Terminals
+
+generate aventuraGrafica "http://www.xtext.org/example/mydsl/MyDsl"
+
+
+Juego:
+	objetos+=Objeto*
+	posicion=Posicion
+	habitaciones+=Habitacion*
+	comandos+=Comando*
+;
+
+Objeto:
+	'objeto' (recogible?= 'recogible')? name=ID
+		('descripcion' descripcion=STRING)?
+		('tiene' estado=EstadoDeObjeto)?
+		acciones+=Accion*
+;
+
+Habitacion:
+	'habitacion' (final?= 'final')? name=ID
+		'al ingresar' 
+			'-' 'mostrar' descripcion=STRING
+			('-' 'cambiar el' estadoACambiar=STRING /*estado=[EstadoDeObjeto]*/ 'de' objetoACambiar=[Objeto] 'al valor' valorNuevo=STRING)?
+		('objetos' 
+			('-' objetos+=[Objeto])*)?
+;
+
+Posicion:
+	'iniciar en' habitacion=[Habitacion] 
+;
+
+Comando:
+	MostrarObjetos | DescribirObjeto | RecogerObjeto | MostrarInventario | Acciones | EjecutarAccion
+;
+
+MostrarObjetos:
+	'objetos ?'{MostrarObjetos}
+;
+
+DescribirObjeto:
+	'describir' objeto=[Objeto]
+;
+
+RecogerObjeto:
+	'recoger' objeto=[Objeto]
+;
+
+MostrarInventario:
+	'inventario ?'{MostrarInventario}
+;
+
+Acciones:
+	'acciones' objeto=[Objeto] '?'
+;
+
+EjecutarAccion:
+	'accion' accion=[IrA] (('a'|'al'|'a la'))? objeto=[Objeto] |
+	'accion' accion=[Accion] objeto=[Objeto]
+;
+
+Accion:
+	IrA | CambiarEstado
+;
+
+IrA:
+	'accion' name=ID 'hace ir a' habitacion=[Habitacion]
+		('cuando' variable=[EstadoDeObjeto] 'es' valor=STRING)?
+;
+
+CambiarEstado:
+	'accion' name=ID 'hace cambiar el' variableACambiar=[EstadoDeObjeto] 'al valor' valorNuevo=STRING	
+		'cuando' variableCondicion=[EstadoDeObjeto] 'es' valorCondicional=STRING
+;
+
+EstadoDeObjeto:
+	name=ID ('con valor' valor=STRING)?
+;

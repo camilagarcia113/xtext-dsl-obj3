@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aventuraGrafica" nsURI="http://www.xtext.org/example/mydsl/MyDsl"
+    nsPrefix="aventuraGrafica">
+  <eClassifiers xsi:type="ecore:EClass" name="Juego">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objetos" upperBound="-1"
+        eType="#//Objeto" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="posicion" eType="#//Posicion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="habitaciones" upperBound="-1"
+        eType="#//Habitacion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comandos" upperBound="-1"
+        eType="#//Comando" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Objeto">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recogible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descripcion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="estado" eType="#//EstadoDeObjeto"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="acciones" upperBound="-1"
+        eType="#//Accion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Habitacion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="final" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descripcion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estadoACambiar" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objetoACambiar" eType="#//Objeto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valorNuevo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objetos" unique="false"
+        upperBound="-1" eType="#//Objeto"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Posicion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="habitacion" eType="#//Habitacion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Comando"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MostrarObjetos" eSuperTypes="#//Comando"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DescribirObjeto" eSuperTypes="#//Comando">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objeto" eType="#//Objeto"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecogerObjeto" eSuperTypes="#//Comando">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objeto" eType="#//Objeto"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MostrarInventario" eSuperTypes="#//Comando"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Acciones" eSuperTypes="#//Comando">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objeto" eType="#//Objeto"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EjecutarAccion" eSuperTypes="#//Comando">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accion" eType="#//Accion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objeto" eType="#//Objeto"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Accion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IrA" eSuperTypes="#//Accion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="habitacion" eType="#//Habitacion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//EstadoDeObjeto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CambiarEstado" eSuperTypes="#//Accion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableACambiar" eType="#//EstadoDeObjeto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valorNuevo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableCondicion" eType="#//EstadoDeObjeto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valorCondicional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EstadoDeObjeto">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

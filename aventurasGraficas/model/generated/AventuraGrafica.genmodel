@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/aventurasGraficas/src-gen" editDirectory="/aventurasGraficas.edit/src"
+    editorDirectory="/aventurasGraficas.editor/src" modelPluginID="aventurasGraficas"
+    forceOverwrite="true" modelName="AventuraGrafica" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="aventurasGraficas.edit"
+    editorPluginID="aventurasGraficas.editor" runtimeVersion="2.11">
+  <genPackages prefix="AventuraGrafica" basePackage="ar.edu.unq" disposableProviderFactory="true"
+      fileExtensions="ag" ecorePackage="AventuraGrafica.ecore#/">
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Juego">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Juego/objetos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Juego/posicion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Juego/habitaciones"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Juego/comandos"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Objeto">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Objeto/recogible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Objeto/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Objeto/descripcion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Objeto/estado"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Objeto/acciones"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Habitacion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Habitacion/final"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Habitacion/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Habitacion/descripcion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Habitacion/estadoACambiar"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Habitacion/objetoACambiar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Habitacion/valorNuevo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Habitacion/objetos"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Posicion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Posicion/habitacion"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Comando"/>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//MostrarObjetos"/>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//DescribirObjeto">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//DescribirObjeto/objeto"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//RecogerObjeto">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//RecogerObjeto/objeto"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//MostrarInventario"/>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Acciones">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//Acciones/objeto"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//EjecutarAccion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//EjecutarAccion/accion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//EjecutarAccion/objeto"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//Accion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//Accion/name"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//IrA">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//IrA/habitacion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//IrA/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//IrA/valor"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//CambiarEstado">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//CambiarEstado/variableACambiar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//CambiarEstado/valorNuevo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AventuraGrafica.ecore#//CambiarEstado/variableCondicion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//CambiarEstado/valorCondicional"/>
+    </genClasses>
+    <genClasses ecoreClass="AventuraGrafica.ecore#//EstadoDeObjeto">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//EstadoDeObjeto/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AventuraGrafica.ecore#//EstadoDeObjeto/valor"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
